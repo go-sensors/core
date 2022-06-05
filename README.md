@@ -8,6 +8,8 @@ This library is agnostic of any sensor implementation or protocol.
 
 Take a look at [rpi-sensor-exporter][rpi-sensor-exporter] for an example implementation that makes use of this library and several sensors.
 
+[rpi-sensor-exporter]: https://github.com/go-sensors/rpi-sensor-exporter
+
 ## Building
 
 This software doesn't have any compiled assets, but the build process does run linting, vetting, and tests against each release.
@@ -28,5 +30,3 @@ We welcome contributions and collaboration on this project. Please read our [con
 [![GitHub contributors](https://img.shields.io/github/contributors/go-sensors/core.svg)](https://github.com/go-sensors/core/graphs/contributors)
 
 This software is made available by Daniel James under the MIT license.
-
-[rpi-sensor-exporter]: https://github.com/go-sensors/rpi-sensor-exporter
