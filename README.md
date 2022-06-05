@@ -12,7 +12,7 @@ Take a look at [rpi-sensor-exporter][rpi-sensor-exporter] for an example impleme
 
 ## Building
 
-This software doesn't have any compiled assets, but the build process does run linting, vetting, and tests against each release.
+This software doesn't have any compiled assets.
 
 ## Code of Conduct
 
