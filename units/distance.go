@@ -3,7 +3,7 @@ package units
 import "fmt"
 
 // Distance represents the smallest measurable distance as an int64 nanometer count
-type Distance int64
+type Distance uint64
 
 const (
 	Nanometer  Distance = 1
