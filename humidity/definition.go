@@ -8,6 +8,7 @@ import (
 
 //go:generate mockgen -source=./definition.go -destination=./mocks/mock_definition.go -package=mocks
 
+// RelativeHumiditySpec is a specification of valid measurement ranges supported by the sensor
 type RelativeHumiditySpec struct {
 	// PercentageResolution is a value typically in the range of 0.0 (0%) to 1.0 (100%), though higher values may be feasible depending on conditions
 	PercentageResolution float64
@@ -17,6 +18,7 @@ type RelativeHumiditySpec struct {
 	MaxPercentage float64
 }
 
+// RelativeHumiditySensor defines a sensor for measuring relative humidity
 type RelativeHumiditySensor interface {
 	// Run begins reading from the sensor and blocks until either an error occurs or the context is completed
 	Run(context.Context) error
