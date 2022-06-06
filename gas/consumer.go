@@ -30,7 +30,10 @@ func (c *Consumer) Run(ctx context.Context) error {
 		select {
 		case <-ctx.Done():
 			return nil
-		case concentration := <-c.sensor.Concentrations():
+		case concentration, ok := <-c.sensor.Concentrations():
+			if !ok {
+				return nil
+			}
 			for _, handler := range c.handlers {
 				err := handler.HandleGasConcentration(concentration)
 				if err != nil {

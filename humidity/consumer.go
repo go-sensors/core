@@ -34,7 +34,10 @@ func (c *Consumer) Run(ctx context.Context) error {
 		select {
 		case <-ctx.Done():
 			return nil
-		case relativeHumidity := <-c.sensor.RelativeHumidities():
+		case relativeHumidity, ok := <-c.sensor.RelativeHumidities():
+			if !ok {
+				return nil
+			}
 			for _, handler := range c.handlers {
 				err := handler.HandleRelativeHumidity(relativeHumidity)
 				if err != nil {

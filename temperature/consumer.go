@@ -34,7 +34,10 @@ func (c *Consumer) Run(ctx context.Context) error {
 		select {
 		case <-ctx.Done():
 			return nil
-		case temperature := <-c.sensor.Temperatures():
+		case temperature, ok := <-c.sensor.Temperatures():
+			if !ok {
+				return nil
+			}
 			for _, handler := range c.handlers {
 				err := handler.HandleTemperature(temperature)
 				if err != nil {
