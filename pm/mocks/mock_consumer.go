@@ -5,6 +5,7 @@
 package mocks
 
 import (
+	context "context"
 	reflect "reflect"
 
 	pm "github.com/go-sensors/core/pm"
@@ -35,15 +36,15 @@ func (m *MockHandler) EXPECT() *MockHandlerMockRecorder {
 }
 
 // HandlePMConcentration mocks base method.
-func (m *MockHandler) HandlePMConcentration(arg0 *pm.Concentration) error {
+func (m *MockHandler) HandlePMConcentration(arg0 context.Context, arg1 *pm.Concentration) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "HandlePMConcentration", arg0)
+	ret := m.ctrl.Call(m, "HandlePMConcentration", arg0, arg1)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // HandlePMConcentration indicates an expected call of HandlePMConcentration.
-func (mr *MockHandlerMockRecorder) HandlePMConcentration(arg0 interface{}) *gomock.Call {
+func (mr *MockHandlerMockRecorder) HandlePMConcentration(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HandlePMConcentration", reflect.TypeOf((*MockHandler)(nil).HandlePMConcentration), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HandlePMConcentration", reflect.TypeOf((*MockHandler)(nil).HandlePMConcentration), arg0, arg1)
 }

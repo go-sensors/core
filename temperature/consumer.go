@@ -17,7 +17,7 @@ type Consumer struct {
 // Handler defines a handler of temperatures
 type Handler interface {
 	// Handles an individual temperature measurement
-	HandleTemperature(*units.Temperature) error
+	HandleTemperature(context.Context, *units.Temperature) error
 }
 
 // NewConsumer returns a new Consumer with the configured handlers
@@ -39,7 +39,7 @@ func (c *Consumer) Run(ctx context.Context) error {
 				return nil
 			}
 			for _, handler := range c.handlers {
-				err := handler.HandleTemperature(temperature)
+				err := handler.HandleTemperature(ctx, temperature)
 				if err != nil {
 					return err
 				}

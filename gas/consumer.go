@@ -13,7 +13,7 @@ type Consumer struct {
 // Handler defines a handler of gas concentrations
 type Handler interface {
 	// Handles an individual concentration measurement
-	HandleGasConcentration(*Concentration) error
+	HandleGasConcentration(context.Context, *Concentration) error
 }
 
 // NewConsumer returns a new Consumer with the configured handlers
@@ -35,7 +35,7 @@ func (c *Consumer) Run(ctx context.Context) error {
 				return nil
 			}
 			for _, handler := range c.handlers {
-				err := handler.HandleGasConcentration(concentration)
+				err := handler.HandleGasConcentration(ctx, concentration)
 				if err != nil {
 					return err
 				}

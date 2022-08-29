@@ -17,7 +17,7 @@ type Consumer struct {
 // Handler defines a handler of relative humidities
 type Handler interface {
 	// Handles an individual relative humidity measurement
-	HandleRelativeHumidity(*units.RelativeHumidity) error
+	HandleRelativeHumidity(context.Context, *units.RelativeHumidity) error
 }
 
 // NewConsumer returns a new Consumer with the configured handlers
@@ -39,7 +39,7 @@ func (c *Consumer) Run(ctx context.Context) error {
 				return nil
 			}
 			for _, handler := range c.handlers {
-				err := handler.HandleRelativeHumidity(relativeHumidity)
+				err := handler.HandleRelativeHumidity(ctx, relativeHumidity)
 				if err != nil {
 					return err
 				}

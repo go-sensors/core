@@ -5,6 +5,7 @@
 package mocks
 
 import (
+	context "context"
 	reflect "reflect"
 
 	units "github.com/go-sensors/core/units"
@@ -35,15 +36,15 @@ func (m *MockHandler) EXPECT() *MockHandlerMockRecorder {
 }
 
 // HandleRelativeHumidity mocks base method.
-func (m *MockHandler) HandleRelativeHumidity(arg0 *units.RelativeHumidity) error {
+func (m *MockHandler) HandleRelativeHumidity(arg0 context.Context, arg1 *units.RelativeHumidity) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "HandleRelativeHumidity", arg0)
+	ret := m.ctrl.Call(m, "HandleRelativeHumidity", arg0, arg1)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // HandleRelativeHumidity indicates an expected call of HandleRelativeHumidity.
-func (mr *MockHandlerMockRecorder) HandleRelativeHumidity(arg0 interface{}) *gomock.Call {
+func (mr *MockHandlerMockRecorder) HandleRelativeHumidity(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HandleRelativeHumidity", reflect.TypeOf((*MockHandler)(nil).HandleRelativeHumidity), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HandleRelativeHumidity", reflect.TypeOf((*MockHandler)(nil).HandleRelativeHumidity), arg0, arg1)
 }

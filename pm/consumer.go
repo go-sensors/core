@@ -13,7 +13,7 @@ type Consumer struct {
 // Handler defines a handler of particulate matter concentrations
 type Handler interface {
 	// Handles an individual concentration measurement
-	HandlePMConcentration(*Concentration) error
+	HandlePMConcentration(context.Context, *Concentration) error
 }
 
 // NewConsumer returns a new Consumer with the configured handlers
@@ -35,7 +35,7 @@ func (c *Consumer) Run(ctx context.Context) error {
 				return nil
 			}
 			for _, handler := range c.handlers {
-				err := handler.HandlePMConcentration(concentration)
+				err := handler.HandlePMConcentration(ctx, concentration)
 				if err != nil {
 					return err
 				}

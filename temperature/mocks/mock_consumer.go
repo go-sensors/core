@@ -5,6 +5,7 @@
 package mocks
 
 import (
+	context "context"
 	reflect "reflect"
 
 	units "github.com/go-sensors/core/units"
@@ -35,15 +36,15 @@ func (m *MockHandler) EXPECT() *MockHandlerMockRecorder {
 }
 
 // HandleTemperature mocks base method.
-func (m *MockHandler) HandleTemperature(arg0 *units.Temperature) error {
+func (m *MockHandler) HandleTemperature(arg0 context.Context, arg1 *units.Temperature) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "HandleTemperature", arg0)
+	ret := m.ctrl.Call(m, "HandleTemperature", arg0, arg1)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // HandleTemperature indicates an expected call of HandleTemperature.
-func (mr *MockHandlerMockRecorder) HandleTemperature(arg0 interface{}) *gomock.Call {
+func (mr *MockHandlerMockRecorder) HandleTemperature(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HandleTemperature", reflect.TypeOf((*MockHandler)(nil).HandleTemperature), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HandleTemperature", reflect.TypeOf((*MockHandler)(nil).HandleTemperature), arg0, arg1)
 }
