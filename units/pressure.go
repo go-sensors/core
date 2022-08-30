@@ -65,6 +65,10 @@ func (distance Pressure) Pascals() float64 {
 	return float64(distance) / float64(Pascal)
 }
 
+func (distance Pressure) Hectopascals() float64 {
+	return float64(distance) / float64(Hectopascal)
+}
+
 func (distance Pressure) Kilopascals() float64 {
 	return float64(distance) / float64(Kilopascal)
 }
